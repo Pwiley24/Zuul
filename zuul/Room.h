@@ -13,7 +13,8 @@ class Room{
   int westExit;
   int southExit;
   int eastExit;
-  vector <char[]> items;
+  char* item;
+  vector <char*> items;
 
   void setDescription(char*);
   void printDescription();
@@ -23,7 +24,8 @@ class Room{
    */
   void setExits(int north, int west, int south, int east);
   void printExits();
-
+  void setItems(char*);
+  void printItems();
 };
 
 

@@ -46,4 +46,20 @@ void Room::printExits(){
   cout << " " << endl;
 }
 
+void Room::printItems(){
+  vector <char*>::iterator ptr;
+
+  for(ptr = items.begin(); ptr < items.end(); ptr++){
+    cout << (*ptr) << " ";
+  }
+  cout << " " << endl;
+}
+
+void Room::setItems(char* name){
+  item = new char[20];
+  strcpy(item, name);
+  items.push_back(item);
+}
+
+
 
