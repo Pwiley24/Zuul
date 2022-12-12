@@ -1,3 +1,4 @@
+
 #ifndef NAME
 #define NAME
 #include <iostream>
@@ -9,10 +10,10 @@ using namespace std;
 class Room{
  public:
   char* description;
-  int northExit;
-  int westExit;
-  int southExit;
-  int eastExit;
+  Room* northExit;
+  Room* westExit;
+  Room* southExit;
+  Room* eastExit;
   char* item;
   vector <char*> items;
 
@@ -22,10 +23,12 @@ class Room{
    * 0 = no exit there
    * 1 = exit there
    */
-  void setExits(int north, int west, int south, int east);
+  void setExits(Room* north, Room* west, Room* south, Room* east);
   void printExits();
   void setItems(char*);
   void printItems();
+  Room* getExit(char*);
+  vector <char*> getItems();
 };
 
 

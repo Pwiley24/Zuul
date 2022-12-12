@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <vector>
 #include "Room.h"
 
 using namespace std;
@@ -14,33 +15,42 @@ void Room::printDescription(){
   cout << description << endl;
 }
 
-void Room::setExits(int north, int west, int south, int east){
-  if(north == 1){//north exit
-    northExit = 1;
+void Room::setExits(Room* north, Room* west, Room* south, Room* east){
+  
+  if(north != NULL){//north exit
+    northExit = north;
+  }else{
+    northExit = NULL;
   }
-  if(west == 1){//west exit
-    westExit = 1;
+  if(west != NULL){//west exit
+    westExit = west;
+  }else{
+    westExit = NULL;
   }
-  if(south == 1){//south exit
-    southExit = 1;
+  if(south != NULL){//south exit
+    southExit = south;
+  }else{
+    southExit = NULL;
   }
-  if(east ==1){//east exit
-    eastExit = 1;
+  if(east != NULL){//east exit
+    eastExit = east;
+  }else{
+    eastExit = NULL;
   }
 }
 
 void Room::printExits(){
   cout << "You can exit: ";
-  if(northExit == 1){
+  if(northExit != NULL){
     cout << "North ";
   }
-  if(westExit == 1){
+  if(westExit != NULL){
     cout << "West ";
   }
-  if(southExit == 1){
+  if(southExit != NULL){
     cout << "South ";
   }
-  if(eastExit == 1){
+  if(eastExit != NULL){
     cout << "East";
   }
   cout << " " << endl;
@@ -61,5 +71,19 @@ void Room::setItems(char* name){
   items.push_back(item);
 }
 
+Room* Room::getExit(char* direction){
+  if(strcmp(direction, "north") == 0){
+    return northExit;
+  }else if(strcmp(direction, "west") == 0){
+    return westExit;
+  }else if(strcmp(direction, "south") == 0){
+    return southExit;
+  }else if(strcmp(direction, "east") == 0){
+    return eastExit;
+  }
+  return NULL;
+}
 
-
+vector <char*> Room::getItems(){
+  return items;
+}
