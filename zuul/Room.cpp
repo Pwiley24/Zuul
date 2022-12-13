@@ -5,8 +5,17 @@
 
 using namespace std;
 
+void Room::setName(char* title){
+  name = new char[30];
+  strcpy(name, title);
+}
+
+char* Room::getName(){
+  return name;
+}
+
 void Room::setDescription(char* outline){
-  description = new char[30];
+  description = new char[500];
   strcpy(description, outline);
   
 }
@@ -58,6 +67,7 @@ void Room::printExits(){
 
 void Room::printItems(){
   vector <char*>::iterator ptr;
+  cout << "Items in the room: ";
 
   for(ptr = items.begin(); ptr < items.end(); ptr++){
     cout << (*ptr) << " ";
@@ -69,6 +79,10 @@ void Room::setItems(char* name){
   item = new char[20];
   strcpy(item, name);
   items.push_back(item);
+}
+
+void Room::clearItems(){
+  items.clear();
 }
 
 Room* Room::getExit(char* direction){
@@ -87,3 +101,5 @@ Room* Room::getExit(char* direction){
 vector <char*> Room::getItems(){
   return items;
 }
+
+

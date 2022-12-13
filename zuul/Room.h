@@ -14,6 +14,7 @@ class Room{
   Room* westExit;
   Room* southExit;
   Room* eastExit;
+  char* name;
   char* item;
   vector <char*> items;
 
@@ -26,9 +27,12 @@ class Room{
   void setExits(Room* north, Room* west, Room* south, Room* east);
   void printExits();
   void setItems(char*);
+  void clearItems();
   void printItems();
   Room* getExit(char*);
   vector <char*> getItems();
+  void setName(char*);
+  char* getName();
 };
 
 
