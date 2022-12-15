@@ -9,7 +9,11 @@ bool winningInventory(vector <char*> inventory);
 void printInventory(vector<char*> inventory);
 
 /*
- * Note for Exit setting: 0 = no exit; 1 = exit there
+ * This program is a zuul program set in the zoo. The goal as the user is to collect the three keys and 
+ * escape the zoo through the exit gates.
+ *Note for Exit setting: 0 = no exit; 1 = exit there.
+ *Author: Paige Wiley
+ *Date: 12-15-22
  */
 
 void play(){
@@ -171,7 +175,7 @@ void play(){
 
 	//winning condition:
       }else if(strcmp(input, "south") == 0 &&
-	       strcmp(currentRoom->getName(), "Exit Gates") == 0 &&
+	       strcmp(currentRoom->getName(), "Gate Exit") == 0 &&
 	       winningInventory(inventory)){//you are exiting the zoo gates and have all the keys
 	cout << "Congratulations! You escaped the Zoo!" << endl;
 	won = true;
@@ -214,6 +218,7 @@ void play(){
 	cout << "Sorry, you can't perform that action." << endl;
       }
 
+
       //check if you can now pass big cats or panda exibits:
       vector <char*> items;
       if(strcmp(currentRoom->getName(), "Big Cats") == 0){//if you are currently in big cat exibit
@@ -223,6 +228,7 @@ void play(){
 	for(ptr = items.begin(); ptr < items.end(); ptr++){
 	  if(strcmp((*ptr), "Red Meat") == 0){
 	    bigCat->setExits(girrafe, NULL, NULL, infoCenter);
+	    bigCat->setDescription("You are in the Big Cat exibit. It looks safe to cross now that they're distracted.");
 	    currentRoom = bigCat;
 	  }
 	}
@@ -234,6 +240,7 @@ void play(){
 	for(ptr = items.begin(); ptr < items.end(); ptr++){
 	  if(strcmp((*ptr), "Bamboo") == 0){
 	    panda->setExits(bear, NULL, NULL, reptile);
+	    panda->setDescription("You are in the Panda exibit. It looks safe to cross now that they're distracted.");
 	    currentRoom = panda;
 	  }
 	}
@@ -252,7 +259,6 @@ void play(){
 bool winningInventory(vector <char*> inventory){
   vector <char*>::iterator ptr;
   int keys = 0; 
-  
   for(ptr = inventory.begin(); ptr < inventory.end(); ptr++){
     if(strcmp((*ptr), "Orange Key") == 0 ||
        strcmp((*ptr), "Yellow Key") == 0 ||
